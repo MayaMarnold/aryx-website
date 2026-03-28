@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aryx Industries — ODEN R Research Platform</title>
+<meta name="description" content="ODEN R by Aryx Industries. Research-grade dexterous hand with up to 17 DOF, dual modular thumbs, and full API control. Built for university labs and humanoid robotics.">
+<meta property="og:title" content="Aryx Industries — ODEN R Research Platform">
+<meta property="og:description" content="Research-grade dexterous manipulation. Up to 17 DOF, modular thumb system, API-first architecture. Built for university labs and humanoid robotics.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://aryx.industries/og-aryx-research.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aryx.industries/og-aryx-research.png">
+<meta property="og:url" content="https://aryx.industries/research">
+<meta name="theme-color" content="#030305" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f8f7f4" media="(prefers-color-scheme: light)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@200;300;400;500;600&family=Exo+2:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--void:#030305;--deep:#080810;--surface:#0c0c14;--card:#0f0f18;--steel-darkest:#151520;--steel-dark:#1a1a28;--steel:#28283a;--steel-mid:#44445a;--steel-light:#6a6a82;--silver:#9a9ab2;--silver-bright:#c0c0d4;--white:#e4e4f0;--ice:#f0f0fa;--accent:#5c8aad;--accent-bright:#7aaccc;--accent-dim:#3a6080;--warm:#ad8a5c;--warm-bright:#c9a46e;--warm-dim:rgba(173,138,92,0.3);--nav-bg:rgba(3,3,5,.8);--nav-bg-scroll:rgba(3,3,5,.95);--nav-border:rgba(40,40,58,.3);--nav-border-scroll:rgba(40,40,58,.6);--hex-r:173;--hex-g:138;--hex-b:92;--grain-opacity:.018;--amb1:#2a2010;--amb2:#1a2a30;--amb3:#2a1a10;--amb1-o:.06;--amb2-o:.04;--amb3-o:.03}
+[data-theme="light"]{--void:#f8f7f4;--deep:#f0efe9;--surface:#e8e7e1;--card:#efeee8;--steel-darkest:#d8d6ce;--steel-dark:#ccc9c0;--steel:#b0ada2;--steel-mid:#7a7872;--steel-light:#6e6b62;--silver:#52504a;--silver-bright:#3a3834;--white:#282e45;--ice:#282e45;--accent:#3d6e8e;--accent-bright:#2d5a78;--accent-dim:#5a93b8;--warm:#7a5a2c;--warm-bright:#604518;--warm-dim:rgba(122,90,44,0.2);--nav-bg:rgba(248,247,244,.85);--nav-bg-scroll:rgba(248,247,244,.95);--nav-border:rgba(204,201,192,.4);--nav-border-scroll:rgba(204,201,192,.7);--hex-r:100;--hex-g:85;--hex-b:50;--grain-opacity:.025;--amb1:#d8d0b8;--amb2:#c8d8e0;--amb3:#d8c8a8;--amb1-o:.15;--amb2-o:.08;--amb3-o:.08}
+html{scroll-behavior:smooth}
+html,body,nav,.stat-cell,.product-card,.feat-cell,.about-detail,.tech-content,.footer{transition:background-color .5s ease, color .4s ease, border-color .4s ease}
+body{background:var(--void);color:var(--silver);font-family:'Inter',-apple-system,sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:default}
+::selection{background:rgba(173,138,92,.25);color:var(--white)}
+body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;opacity:var(--grain-opacity);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px 256px}
+.ambient{position:fixed;border-radius:50%;filter:blur(180px);pointer-events:none;z-index:0}
+.amb-1{width:700px;height:700px;background:#2a2010;top:-300px;right:-200px;opacity:.06}
+.amb-2{width:500px;height:500px;background:#1a2a30;bottom:-200px;left:-200px;opacity:.04}
+.amb-3{width:400px;height:400px;background:#2a1a10;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.03}
+.page{position:relative;z-index:1}
+section{position:relative}
+.content{max-width:960px;margin:0 auto;padding:0 40px;width:100%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--nav-border);transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-mark{transition:opacity .3s;opacity:.6}
+.nav-logo:hover .nav-mark{opacity:1}
+.nav-wordmark{font-family:'Michroma',sans-serif;font-size:10px;letter-spacing:5px;color:var(--silver-bright)}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{font-size:10px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--steel-mid);text-decoration:none;transition:color .3s;padding:4px 0}
+.nav-links a:hover{color:var(--silver-bright)}
+.nav-cta{font-size:9px!important;letter-spacing:2px!important;color:var(--warm)!important;border:1px solid var(--warm-dim);padding:8px 16px!important;transition:all .3s!important}
+.nav-cta:hover{border-color:var(--warm)!important;background:rgba(173,138,92,.06);color:var(--warm-bright)!important}
+.nav-back{font-size:9px!important;letter-spacing:2px!important;color:var(--accent)!important;border:1px solid var(--steel);padding:8px 16px!important;transition:all .3s!important;text-decoration:none!important}
+.nav-back:hover{border-color:var(--accent-dim)!important;background:rgba(92,138,173,.06);color:var(--accent-bright)!important}
+.theme-toggle{background:none;border:1px solid var(--steel);width:32px;height:32px;min-width:32px;aspect-ratio:1;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;padding:0;color:var(--steel-mid)}
+.theme-toggle:hover{border-color:var(--steel-mid);color:var(--silver-bright)}
+.theme-toggle svg{width:14px;height:14px;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.theme-toggle:hover svg{transform:rotate(30deg)}
+
+/* HAMBURGER + MOBILE MENU */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;width:36px;height:36px;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--steel-mid);transition:all .3s cubic-bezier(.16,1,.3,1)}
+.hamburger.active span:first-child{transform:translateY(3.75px) rotate(45deg);background:var(--silver-bright)}
+.hamburger.active span:last-child{transform:translateY(-3.75px) rotate(-45deg);background:var(--silver-bright)}
+.mobile-menu{position:fixed;top:64px;left:0;right:0;bottom:0;z-index:999;background:var(--void);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px)}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu-inner{display:flex;flex-direction:column;padding:48px 40px;gap:0}
+.mobile-link{font-family:'Inter',sans-serif;font-size:14px;font-weight:300;letter-spacing:4px;text-transform:uppercase;color:var(--steel-light);text-decoration:none;padding:16px 0;border-bottom:1px solid var(--steel-dark);transition:color .3s,transform .3s;transform:translateX(-12px);opacity:0}
+.mobile-menu.open .mobile-link{transform:translateX(0);opacity:1}
+.mobile-link:nth-child(1){transition-delay:.05s}
+.mobile-link:nth-child(2){transition-delay:.1s}
+.mobile-link:nth-child(3){transition-delay:.15s}
+.mobile-link:nth-child(5){transition-delay:.25s}
+.mobile-link:nth-child(6){transition-delay:.3s}
+.mobile-link:hover{color:var(--silver-bright)}
+.mobile-back{color:var(--accent)!important}
+.mobile-cta{color:var(--warm)!important}
+.mobile-divider{width:32px;height:1px;background:var(--steel);margin:12px 0}
+@media(max-width:768px){.hamburger{display:flex}}
+
+/* HERO */
+.hero{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding-top:64px}
+[data-theme="light"] .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,rgba(220,225,235,.45),transparent);z-index:1;pointer-events:none}
+#hex-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0;animation:fadeIn 2s ease-out .2s forwards}
+.hero-content{position:relative;z-index:2}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);margin-bottom:32px;display:inline-flex;align-items:center;gap:12px;opacity:0;animation:fadeIn 1s ease-out .5s forwards}
+.hero-badge::before,.hero-badge::after{content:'';width:24px;height:1px;background:var(--warm-dim)}
+.hero-name{font-family:'Michroma',sans-serif;font-size:clamp(32px,6vw,56px);letter-spacing:clamp(12px,2.5vw,24px);color:var(--ice);padding-left:24px;opacity:0;animation:riseIn 1.4s cubic-bezier(.16,1,.3,1) .8s forwards}
+.hero-divider{width:48px;height:1px;margin:20px auto;background:linear-gradient(90deg,transparent,var(--warm-dim),transparent);opacity:0;animation:expandIn 1s ease-out 1.6s forwards}
+.hero-sub{font-family:'Exo 2',sans-serif;font-weight:200;font-size:clamp(11px,1.4vw,14px);letter-spacing:clamp(6px,1.4vw,10px);text-transform:uppercase;color:var(--steel-light);padding-left:10px;opacity:0;animation:riseIn 1.2s cubic-bezier(.16,1,.3,1) 1.9s forwards}
+.hero-tagline{font-family:'Inter',sans-serif;font-weight:300;font-size:16px;color:var(--silver);max-width:580px;margin:40px auto 0;line-height:1.9;opacity:0;animation:fadeIn 1.5s ease-out 2.4s forwards}
+.hero-tagline strong{color:var(--warm);font-weight:400}
+
+/* SECTION COMMON */
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:300;letter-spacing:4px;text-transform:uppercase;color:var(--warm);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section-tag::before{content:'';width:20px;height:1px;background:var(--warm)}
+.section-title{font-family:'Michroma',sans-serif;font-size:clamp(28px,4vw,48px);letter-spacing:clamp(6px,1.2vw,14px);color:var(--white);padding-left:14px;margin-bottom:10px}
+.section-subtitle{font-family:'Exo 2',sans-serif;font-weight:200;font-size:14px;letter-spacing:3px;color:var(--warm);margin-bottom:44px}
+
+/* STATS */
+.s-stats{padding:100px 0;background:linear-gradient(180deg,var(--void) 0%,var(--deep) 50%,var(--void) 100%)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--steel-dark);border:1px solid var(--steel-dark)}
+.stat-cell{background:var(--void);padding:32px 24px;text-align:center;transition:background .4s}
+.stat-cell:hover{background:var(--surface)}
+.stat-num{font-family:'Michroma',sans-serif;font-size:28px;color:var(--white);margin-bottom:8px}
+.stat-lbl{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--steel-light);line-height:1.6}
+
+/* TECH — all 4 innovations */
+.s-tech{padding:140px 0 120px;background:var(--void);position:relative;overflow:hidden}
+.s-tech::before{display:none}
+.tech-intro{font-size:15px;line-height:2;color:var(--silver);max-width:620px;margin-bottom:80px}
+.tech-intro strong{color:var(--white);font-weight:400}
+.tech-timeline{position:relative;display:flex;flex-direction:column}
+.tech-timeline::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:100%;background:linear-gradient(to bottom,var(--steel) 0%,var(--steel) 85%,transparent 100%);opacity:.45}
+[data-theme="light"] .tech-timeline::before{opacity:.25}
+.tech-item{display:grid;grid-template-columns:1fr 1fr;min-height:200px;position:relative}
+.tech-item::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;border:1.5px solid var(--warm-dim);background:var(--void);z-index:2;transition:all .6s cubic-bezier(.16,1,.3,1)}
+.tech-item:hover::before,.tech-item.tech-active::before{border-color:var(--warm);box-shadow:0 0 16px rgba(173,138,92,.3);background:rgba(173,138,92,.15)}
+.tech-item:nth-child(odd) .tech-content{grid-column:1;text-align:right;padding-right:48px}
+.tech-item:nth-child(odd) .tech-spacer{grid-column:2}
+.tech-item:nth-child(even) .tech-spacer{grid-column:1}
+.tech-item:nth-child(even) .tech-content{grid-column:2;text-align:left;padding-left:48px}
+.tech-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:300;color:var(--warm-dim);letter-spacing:2px;margin-bottom:12px}
+.tech-name{font-family:'Inter',sans-serif;font-weight:500;font-size:16px;color:var(--silver-bright);margin-bottom:12px;letter-spacing:.3px}
+.tech-desc{font-size:13px;color:var(--steel-light);line-height:1.9;max-width:380px}
+.tech-item:nth-child(odd) .tech-desc{margin-left:auto}
+.tech-patent-note{text-align:center;margin-top:64px}
+.tech-patent-note span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--steel-mid);display:inline-flex;align-items:center;gap:8px}
+.tech-patent-note span::before,.tech-patent-note span::after{content:'';width:24px;height:1px;background:var(--steel-dark)}
+
+/* FEATURES GRID */
+.s-features{padding:120px 0;background:linear-gradient(180deg,var(--void) 0%,var(--deep) 50%,var(--void) 100%)}
+.feat-panel{border:1px solid var(--steel-dark);background:var(--deep);display:grid;grid-template-columns:1fr 1fr;gap:0}
+.feat-cell{padding:36px 32px;transition:background .4s;border-bottom:1px solid var(--steel-dark)}
+.feat-cell:hover{background:var(--surface)}
+.feat-cell:nth-child(odd){border-right:1px solid var(--steel-dark)}
+.feat-cell:last-child{grid-column:1/-1;border-bottom:none}
+.feat-cell:hover{background:var(--surface)}
+.feat-icon{font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--warm);margin-bottom:16px;opacity:.6}
+.feat-title{font-weight:500;font-size:14px;color:var(--silver-bright);margin-bottom:10px;letter-spacing:.3px}
+.feat-desc{font-size:12px;color:var(--steel-light);line-height:1.8}
+
+/* PRODUCT CARD */
+.s-product{padding:120px 0;background:var(--void)}
+.product-card{background:var(--deep);padding:48px 40px;border:1px solid var(--steel-dark);max-width:560px;transition:background .4s}
+.product-card:hover{background:var(--surface)}
+.product-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:300;letter-spacing:3px;text-transform:uppercase;padding:5px 12px;border:1px solid var(--warm-dim);display:inline-block;margin-bottom:24px;color:var(--warm)}
+.product-name{font-family:'Michroma',sans-serif;font-size:20px;letter-spacing:6px;color:var(--white);margin-bottom:6px;padding-left:6px}
+.product-sub{font-family:'Exo 2',sans-serif;font-weight:200;font-size:12px;letter-spacing:2px;color:var(--steel-light);margin-bottom:28px}
+.product-specs{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.product-specs li{font-size:12px;color:var(--silver);display:flex;align-items:baseline;gap:10px;line-height:1.5}
+.product-specs li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--warm-dim);flex-shrink:0;margin-top:7px}
+.product-price{font-family:'Michroma',sans-serif;font-size:16px;color:var(--silver-bright);letter-spacing:2px;padding-top:16px;border-top:1px solid var(--steel-dark)}
+.product-price span{font-family:'Inter',sans-serif;font-weight:300;font-size:10px;letter-spacing:1.5px;color:var(--steel-mid);margin-left:8px}
+.product-compare{margin-top:24px;padding-top:20px;border-top:1px solid var(--steel-dark);font-size:11px;color:var(--steel-light);line-height:1.7}
+.product-compare strong{color:var(--warm);font-weight:400}
+
+/* BEYOND — robotics tease */
+.s-beyond{padding:100px 0;background:linear-gradient(180deg,var(--void) 0%,var(--deep) 50%,var(--void) 100%);text-align:center}
+.beyond-content{max-width:640px;margin:0 auto}
+.beyond-text{font-size:17px;line-height:2.2;color:var(--silver);font-weight:300}
+.beyond-text strong{color:var(--white);font-weight:400}
+.beyond-text em{color:var(--warm);font-style:normal}
+.beyond-sub{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--steel-mid);margin-top:32px}
+
+/* CTA SECTION */
+.s-cta{padding:100px 0;background:var(--void);text-align:center}
+.cta-box{max-width:500px;margin:0 auto}
+.cta-text{font-size:15px;color:var(--silver);margin-bottom:28px;line-height:1.8}
+.cta-btn{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);text-decoration:none;border:1px solid var(--warm-dim);padding:14px 32px;transition:all .3s}
+.cta-btn:hover{background:rgba(173,138,92,.06);border-color:var(--warm)}
+.cta-or{font-size:11px;color:var(--steel-mid);margin-top:16px}
+.cta-or a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:all .3s}
+.cta-or a:hover{border-bottom-color:var(--accent-dim)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--steel-darkest);padding:64px 40px 48px;background:var(--void)}
+.footer-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+.footer-brand-mark{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.footer-brand-text{font-family:'Michroma',sans-serif;font-size:9px;letter-spacing:5px;color:var(--silver)}
+.footer-tagline{font-size:11px;color:var(--steel-mid);letter-spacing:1px;margin-bottom:20px}
+.footer-patent{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.fp-dot{width:4px;height:4px;border-radius:50%;background:var(--warm-dim)}
+.fp-text{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--steel-mid)}
+.footer-heading{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--steel-mid);margin-bottom:16px}
+.footer-link{display:block;font-size:12px;color:var(--silver);text-decoration:none;margin-bottom:10px;transition:color .3s}
+.footer-link:hover{color:var(--warm-bright)}
+.footer-bottom{max-width:960px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--steel-darkest);display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:10px;color:var(--steel-mid);letter-spacing:1px}
+.footer-eu{font-size:9px;color:var(--steel-mid);letter-spacing:1.5px;display:flex;align-items:center;gap:6px}
+.eu-dot{width:6px;height:6px;border-radius:50%;border:1px solid var(--warm-dim)}
+
+/* ANIMATIONS */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes riseIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes expandIn{from{opacity:0;width:0}to{opacity:1;width:48px}}
+@keyframes breathe{0%,100%{opacity:.2;transform:scaleY(.8)}50%{opacity:.7;transform:scaleY(1)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.content{padding:0 24px}nav{padding:0 16px}.nav-links a:not(.nav-cta):not(.nav-back){display:none}.nav-links{gap:12px}
+.stat-grid,.feat-panel{grid-template-columns:1fr}
+.feat-cell:nth-child(odd){border-right:none}
+.footer-grid{grid-template-columns:1fr;gap:32px}.footer-bottom{flex-direction:column;gap:12px;text-align:center}
+.s-stats,.s-product,.s-features,.s-tech,.s-beyond,.s-cta{padding:100px 0 80px}
+.s-tech::before{display:none}.tech-timeline::before{display:none}.tech-item{grid-template-columns:1fr}.tech-item::before{display:none}
+.tech-item:nth-child(odd) .tech-content,.tech-item:nth-child(even) .tech-content{grid-column:1;text-align:left;padding:0}
+.tech-spacer{display:none}.tech-item:nth-child(odd) .tech-desc{margin-left:0}
+.tech-item{min-height:auto;margin-bottom:48px}.tech-item:last-child{margin-bottom:0}
+}
+@media(max-width:480px){.stat-grid{grid-template-columns:1fr 1fr}.hero-name{padding-left:12px}}
+</style>
+</head>
+<body>
+<div class="ambient amb-1"></div>
+<div class="ambient amb-2"></div>
+<div class="ambient amb-3"></div>
+<div class="page">
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-mark" width="32" height="23" viewBox="0 0 120 80" fill="none"><circle cx="10" cy="62" r="3.5" fill="#a8a8b8"/><circle cx="30" cy="38" r="5" fill="#a8a8b8"/><circle cx="56" cy="20" r="5.5" fill="#a8a8b8"/><circle cx="82" cy="14" r="4" fill="#a8a8b8"/><circle cx="108" cy="18" r="4.5" fill="#a8a8b8"/><line x1="13" y1="60" x2="27" y2="41" stroke="#a8a8b8" stroke-width=".8" opacity=".2"/><line x1="34" y1="36" x2="52" y2="23" stroke="#a8a8b8" stroke-width=".8" opacity=".2"/><line x1="60" y1="19" x2="78" y2="16" stroke="#a8a8b8" stroke-width=".8" opacity=".2"/><line x1="86" y1="15" x2="104" y2="17" stroke="#a8a8b8" stroke-width=".8" opacity=".2"/></svg>
+    <span class="nav-wordmark">ARYX</span>
+  </a>
+  <div class="nav-links">
+    <a href="#technology">Technology</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#oden-r">ODEN R</a>
+    <a href="index.html" class="nav-back">&#8592; Medical</a>
+    <a href="mailto:contact@aryx.industries?subject=ODEN%20R%20Research%20Inquiry" class="nav-cta">Get in Touch</a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-inner">
+    <a href="#technology" class="mobile-link">Technology</a>
+    <a href="#capabilities" class="mobile-link">Capabilities</a>
+    <a href="#oden-r" class="mobile-link">ODEN R</a>
+    <div class="mobile-divider"></div>
+    <a href="index.html" class="mobile-link mobile-back">&#8592; Medical</a>
+    <a href="mailto:contact@aryx.industries?subject=ODEN%20R%20Research%20Inquiry" class="mobile-link mobile-cta">Get in Touch</a>
+  </div>
+</div>
+
+<section class="hero">
+  <canvas id="hex-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">Research Platform</div>
+    <h1 class="hero-name">ODEN R</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Dexterous Manipulation, Redefined</p>
+    <p class="hero-tagline">The humanoid robotics wave demands hands that can <strong>grasp, manipulate, and adapt</strong>. ODEN R delivers biomimetic dexterity at a fraction of existing research platforms &#8212; with an architecture designed for integration, not isolation.</p>
+  </div>
+</section>
+
+<section class="s-stats">
+  <div class="content">
+    <div class="stat-grid reveal">
+      <div class="stat-cell"><div class="stat-num" data-count="14" data-suffix="&#8594;17">0</div><div class="stat-lbl">Degrees of<br>Freedom</div></div>
+      <div class="stat-cell"><div class="stat-num" data-typewrite="REAL-TIME" style="font-size:16px;letter-spacing:6px"></div><div class="stat-lbl">Servo<br>Telemetry</div></div>
+      <div class="stat-cell"><div class="stat-num" data-count="2">0</div><div class="stat-lbl">Thumb<br>Configurations</div></div>
+      <div class="stat-cell"><div class="stat-num" data-count="70" data-suffix="°">0</div><div class="stat-lbl">Splay<br>Capable</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="s-tech" id="technology">
+  <div class="content">
+    <div class="reveal"><div class="section-tag">Architecture</div><h2 class="section-title">Technology</h2><p class="section-subtitle">Four Breakthroughs. One Platform.</p></div>
+    <p class="tech-intro reveal reveal-d1">ODEN R inherits the full <strong>ODEN architecture</strong> &#8212; every innovation, unlocked to its maximum configuration. Four patented breakthroughs working in concert to deliver manipulation capability that didn't exist before.</p>
+    <div class="tech-timeline">
+      <div class="tech-item reveal"><div class="tech-content"><p class="tech-num">01</p><p class="tech-name">Independent Finger Splay</p><p class="tech-desc">Each finger moves laterally as well as curling &#8212; just like a real hand. A novel MCP joint architecture enables abduction and adduction without the complexity of traditional robotic approaches.</p></div><div class="tech-spacer"></div></div>
+      <div class="tech-item reveal reveal-d1"><div class="tech-spacer"></div><div class="tech-content"><p class="tech-num">02</p><p class="tech-name">Geometry-Embedded Tendon Routing</p><p class="tech-desc">Tendon paths are encoded directly into the mechanical structure. No pulleys, no external guides. The geometry itself defines the biomechanics &#8212; fewer parts, fewer failure modes, higher fidelity.</p></div></div>
+      <div class="tech-item reveal reveal-d2"><div class="tech-content"><p class="tech-num">03</p><p class="tech-name">Progressive DOF Unlocking</p><p class="tech-desc">Start with baseline control, progressively unlock additional degrees of freedom as your algorithms achieve confidence thresholds. Deterministic manual control always overrides adaptive outputs.</p></div><div class="tech-spacer"></div></div>
+      <div class="tech-item reveal reveal-d3"><div class="tech-spacer"></div><div class="tech-content"><p class="tech-num">04</p><p class="tech-name">Hot-Swap Modular Thumbs</p><p class="tech-desc">Magnetically docked thumb modules with automatic topology detection. Swap opposition geometry in seconds &#8212; the system reconfigures instantly. No calibration, no downtime between experiments.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="s-features" id="capabilities">
+  <div class="content">
+    <div class="reveal"><div class="section-tag">For Your Lab</div><h2 class="section-title" style="margin-bottom:48px">Capabilities</h2></div>
+    <div class="feat-panel reveal reveal-d1">
+      <div class="feat-cell"><p class="feat-icon">&gt;_</p><p class="feat-title">Full API Control</p><p class="feat-desc">Direct servo access, real-time telemetry, and ROS-compatible interfaces. Your control algorithms, our hardware.</p></div>
+      <div class="feat-cell"><p class="feat-icon">&#9881;</p><p class="feat-title">Modular Architecture</p><p class="feat-desc">Hot-swap fingers, thumb configurations, and sensor payloads. Reconfigure for specific manipulation tasks without mechanical rework.</p></div>
+      <div class="feat-cell"><p class="feat-icon">&#9635;</p><p class="feat-title">Anatomical Fidelity</p><p class="feat-desc">Near-human dimensions and joint ranges. Transfer learning from human demonstration data maps directly to hardware kinematics.</p></div>
+      <div class="feat-cell"><p class="feat-icon">&#9698;</p><p class="feat-title">Passive Compliance</p><p class="feat-desc">Differential tendon elasticity provides adaptive grip without force sensors. DIP joints yield naturally on contact &#8212; objects don't slip, fingers don't break.</p></div>
+      <div class="feat-cell"><p class="feat-icon">&#8644;</p><p class="feat-title">Dual Thumb System</p><p class="feat-desc">Two magnetically docked thumb positions with distinct opposition geometry. Switch configurations mid-experiment. Automatic system recalibration on detection.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s-product" id="oden-r">
+  <div class="content">
+    <div class="reveal"><div class="section-tag">The Product</div><h2 class="section-title" style="margin-bottom:48px">ODEN R</h2></div>
+    <div class="product-card reveal reveal-d1">
+      <span class="product-badge">Research Platform</span>
+      <p class="product-sub">Research-Grade Dexterous Hand</p>
+      <ul class="product-specs">
+        <li>Up to 17 degrees of freedom &#8212; full configuration</li>
+        <li>Dual modular thumb system with magnetic hot-swap</li>
+        <li>Full API access &#8212; ROS compatible, real-time telemetry</li>
+        <li>Near-anatomical dimensions and joint ranges</li>
+        <li>Pricing available on inquiry</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="s-beyond">
+  <div class="content"><div class="beyond-content reveal">
+    <p class="beyond-text">ODEN's tendon-driven biomimetic architecture isn't limited to the hand. The same principles &#8212; <strong>geometry-first design</strong>, modular construction, printable manufacturing &#8212; extend naturally to <em>any segment of human motion</em>. The platform is the product.</p>
+    <p class="beyond-sub">One architecture. Unlimited applications.</p>
+  </div></div>
+</section>
+
+<section class="s-cta">
+  <div class="content">
+    <div class="cta-box reveal">
+      <p class="cta-text">Interested in ODEN R for your research lab, robotics programme, or manipulation study?</p>
+      <a href="mailto:contact@aryx.industries?subject=ODEN%20R%20Research%20Inquiry" class="cta-btn">Get in Touch &#8594;</a>
+      <p class="cta-or">Looking for our medical prosthetic? <a href="index.html">View ODEN &#8594;</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col"><div class="footer-brand-mark"><svg width="24" height="17" viewBox="0 0 120 80" fill="none"><circle cx="10" cy="62" r="4" fill="#6a6a82"/><circle cx="30" cy="38" r="5.5" fill="#6a6a82"/><circle cx="56" cy="20" r="6" fill="#6a6a82"/><circle cx="82" cy="14" r="4.5" fill="#6a6a82"/><circle cx="108" cy="18" r="5" fill="#6a6a82"/><line x1="13" y1="60" x2="27" y2="41" stroke="#6a6a82" stroke-width="1" opacity=".25"/><line x1="34" y1="36" x2="52" y2="23" stroke="#6a6a82" stroke-width="1" opacity=".25"/><line x1="60" y1="19" x2="78" y2="16" stroke="#6a6a82" stroke-width="1" opacity=".25"/><line x1="86" y1="15" x2="104" y2="17" stroke="#6a6a82" stroke-width="1" opacity=".25"/></svg><span class="footer-brand-text">ARYX INDUSTRIES</span></div><p class="footer-tagline">Biomimetic hardware. European made.</p><div class="footer-patent"><span class="fp-dot"></span><span class="fp-text">Patent Protected</span></div></div>
+    <div class="footer-col"><p class="footer-heading">Products</p><a href="index.html#oden" class="footer-link">ODEN Overview</a><a href="index.html#medical" class="footer-link">ODEN &#8212; Medical</a><a href="#oden-r" class="footer-link">ODEN R &#8212; Research</a><a href="#technology" class="footer-link">Technology</a></div>
+    <div class="footer-col"><p class="footer-heading">Contact</p><a href="mailto:contact@aryx.industries?subject=ODEN%20R%20Research%20Inquiry" class="footer-link">contact@aryx.industries</a><p class="footer-link" style="color:var(--steel-mid);cursor:default">Warsaw, Poland</p></div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Aryx Industries. All rights reserved.</span><span class="footer-eu"><span class="eu-dot"></span> Designed &#38; Engineered in the EU</span></div>
+</footer>
+
+</div>
+
+<script>
+// Theme toggle
+const toggle=document.getElementById('theme-toggle');
+const sunSVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+const moonSVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+function getHexColors(){const s=getComputedStyle(document.documentElement);return{r:+s.getPropertyValue('--hex-r'),g:+s.getPropertyValue('--hex-g'),b:+s.getPropertyValue('--hex-b')}}
+let hexColors=getHexColors();
+function updateHexColors(){hexColors=getHexColors()}
+function updateAmbients(){const s=getComputedStyle(document.documentElement);const a1=document.querySelector('.amb-1'),a2=document.querySelector('.amb-2'),a3=document.querySelector('.amb-3');if(a1){a1.style.background=s.getPropertyValue('--amb1');a1.style.opacity=s.getPropertyValue('--amb1-o')}if(a2){a2.style.background=s.getPropertyValue('--amb2');a2.style.opacity=s.getPropertyValue('--amb2-o')}if(a3){a3.style.background=s.getPropertyValue('--amb3');a3.style.opacity=s.getPropertyValue('--amb3-o')}}
+function setTheme(t){document.documentElement.setAttribute('data-theme',t);toggle.innerHTML=t==='light'?moonSVG:sunSVG;localStorage.setItem('aryx-theme',t);updateAmbients();updateHexColors()}
+toggle.addEventListener('click',()=>{const cur=document.documentElement.getAttribute('data-theme');setTheme(cur==='light'?'dark':'dark'!==cur?'light':'light')});
+const saved=localStorage.getItem('aryx-theme');if(saved)setTheme(saved);else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches)setTheme('light');
+
+// Hex grid canvas
+const canvas=document.getElementById('hex-canvas'),ctx=canvas.getContext('2d');let mouse={x:-1e3,y:-1e3};
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+function drawHex(t){ctx.clearRect(0,0,canvas.width,canvas.height);const{r,g,b}=hexColors;const s=60,h=s*Math.sqrt(3),cols=Math.ceil(canvas.width/(s*1.5))+2,rows=Math.ceil(canvas.height/h)+2;for(let row=0;row<rows;row++)for(let c=0;c<cols;c++){const x=c*s*1.5,y=row*h+(c%2?h/2:0);const dx=mouse.x-x,dy=mouse.y-y,dist=Math.sqrt(dx*dx+dy*dy);const prox=dist<250?(1-dist/250):0;const pulse=Math.sin(t*.001+x*.005+y*.003)*.15+.15;const alpha=.015+prox*.08+pulse*.02;ctx.beginPath();for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/6;ctx.lineTo(x+s*.4*Math.cos(a),y+s*.4*Math.sin(a))}ctx.closePath();ctx.strokeStyle=`rgba(${r},${g},${b},${alpha})`;ctx.lineWidth=.5;ctx.stroke()}requestAnimationFrame(drawHex)}
+addEventListener('resize',resize);document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});document.addEventListener('mouseleave',()=>{mouse.x=-1e3;mouse.y=-1e3});resize();requestAnimationFrame(drawHex);
+
+// Reveals
+const reveals=document.querySelectorAll('.reveal');
+reveals.forEach(el=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.12,rootMargin:'0px 0px -40px 0px'}).observe(el));
+
+// Stat counter + typewriter
+function animateCount(el){const target=+el.getAttribute('data-count');const prefix=el.getAttribute('data-prefix')||'';const suffix=el.getAttribute('data-suffix')||'';if(el.getAttribute('data-static')==='true'){el.textContent=prefix+target+suffix;return}const dur=1800,start=performance.now();!function upd(now){const p=Math.min((now-start)/dur,1),eased=1-(1-p)**3;el.textContent=prefix+Math.round(eased*target)+suffix;p<1&&requestAnimationFrame(upd)}(start)}
+function animateTypewrite(el){const text=el.getAttribute('data-typewrite');if(!text)return;el.textContent='';el.style.borderRight='1.5px solid var(--warm)';let i=0;const step=()=>{if(i<=text.length){el.textContent=text.slice(0,i);i++;setTimeout(step,100)}else{el.style.borderRight='1.5px solid transparent';setTimeout(()=>{el.style.borderRight='none'},600)}};step()}
+const sObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-count]').forEach((el,i)=>setTimeout(()=>animateCount(el),i*150));e.target.querySelectorAll('[data-typewrite]').forEach((el,i)=>setTimeout(()=>animateTypewrite(el),i*150+150));sObs.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('.stat-grid').forEach(g=>sObs.observe(g));
+
+// Tech timeline scroll activation
+document.querySelectorAll('.tech-item').forEach(el=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('tech-active')})},{threshold:.3,rootMargin:'0px 0px -20% 0px'}).observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));t&&t.scrollIntoView({behavior:'smooth',block:'start'});const mm=document.getElementById('mobile-menu'),hb=document.getElementById('hamburger');if(mm&&mm.classList.contains('open')){mm.classList.remove('open');hb.classList.remove('active');document.body.style.overflow=''}}));
+
+// Hamburger menu
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',()=>{const open=mobileMenu.classList.toggle('open');hamburger.classList.toggle('active');document.body.style.overflow=open?'hidden':''});
+
+// Nav + parallax + hero fade
+let ticking=false;addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{const y=scrollY;const a1=document.querySelector('.amb-1'),a2=document.querySelector('.amb-2'),a3=document.querySelector('.amb-3');if(a1)a1.style.transform=`translateY(${y*.04}px)`;if(a2)a2.style.transform=`translateY(${y*-.03}px)`;if(a3)a3.style.transform=`translate(-50%,calc(-50% + ${y*.02}px))`;const nav=document.querySelector('nav');const s=getComputedStyle(document.documentElement);if(y>100){nav.style.borderBottomColor=s.getPropertyValue('--nav-border-scroll');nav.style.background=s.getPropertyValue('--nav-bg-scroll')}else{nav.style.borderBottomColor=s.getPropertyValue('--nav-border');nav.style.background=s.getPropertyValue('--nav-bg')}const hero=document.querySelector('.hero-content');if(hero){const fade=Math.max(0,1-y/500);hero.style.opacity=fade;hero.style.transform=`translateY(${y*.12}px) scale(${.98+fade*.02})`}ticking=false});ticking=true}});
+</script>
+</body>
+</html>
