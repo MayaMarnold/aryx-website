@@ -254,7 +254,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;
     <a href="#medical">Medical</a>
     <a href="#about">About</a>
     <a href="research.html" class="nav-research">Research</a>
-    <a href="mailto:contact@aryx.industries" class="nav-cta">Contact</a>
+    <a href="mailto:maya@aryx.industries" class="nav-cta">Contact</a>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
     <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span></button>
   </div>
@@ -266,8 +266,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;
     <a href="#medical" class="mobile-link">Medical</a>
     <a href="#about" class="mobile-link">About</a>
     <div class="mobile-divider"></div>
-    <a href="research.html" class="mobile-link mobile-research">Research Platform</a>
-    <a href="mailto:contact@aryx.industries" class="mobile-link mobile-cta">Contact</a>
+    <a href="research.html" class="mobile-link mobile-research">Research Platform</a>`
+    <a href="mailto:maya@aryx.industries" class="mobile-link mobile-cta">Contact</a>
   </div>
 </div>
 
@@ -393,7 +393,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;
   <div class="footer-grid">
     <div class="footer-col"><div class="footer-brand-mark"><svg width="24" height="17" viewBox="0 0 120 80" fill="none"><circle cx="10" cy="62" r="4" fill="#6a6a82"/><circle cx="30" cy="38" r="5.5" fill="#6a6a82"/><circle cx="56" cy="20" r="6" fill="#6a6a82"/><circle cx="82" cy="14" r="4.5" fill="#6a6a82"/><circle cx="108" cy="18" r="5" fill="#6a6a82"/><line x1="13" y1="60" x2="27" y2="41" stroke="#6a6a82" stroke-width="1" opacity=".25"/><line x1="34" y1="36" x2="52" y2="23" stroke="#6a6a82" stroke-width="1" opacity=".25"/><line x1="60" y1="19" x2="78" y2="16" stroke="#6a6a82" stroke-width="1" opacity=".25"/><line x1="86" y1="15" x2="104" y2="17" stroke="#6a6a82" stroke-width="1" opacity=".25"/></svg><span class="footer-brand-text">ARYX INDUSTRIES</span></div><p class="footer-tagline">Biomimetic hardware. European made.</p><div class="footer-patent"><span class="fp-dot"></span><span class="fp-text">Patent Protected</span></div></div>
     <div class="footer-col"><p class="footer-heading">Products</p><a href="#oden" class="footer-link">ODEN Overview</a><a href="#medical" class="footer-link">ODEN &#8212; Medical</a><a href="research.html" class="footer-link">ODEN R &#8212; Research</a><a href="#technology" class="footer-link">Technology</a></div>
-    <div class="footer-col"><p class="footer-heading">Contact</p><a href="mailto:contact@aryx.industries" class="footer-link">contact@aryx.industries</a><p class="footer-link" style="color:var(--steel-mid);cursor:default">Warsaw, Poland</p></div>
+    <div class="footer-col"><p class="footer-heading">Contact</p><a href="mailto:maya@aryx.industries" class="footer-link">maya@aryx.industries</a><p class="footer-link" style="color:var(--steel-mid);cursor:default">Warsaw, Poland</p></div>
   </div>
   <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Aryx Industries. All rights reserved.</span><span class="footer-eu"><span class="eu-dot"></span> Designed &#38; Engineered in the EU</span></div>
 </footer>
@@ -416,11 +416,11 @@ const saved=localStorage.getItem('aryx-theme');if(saved)setTheme(saved);else if(
 // Constellation canvas
 const canvas=document.getElementById('constellation-canvas'),ctx=canvas.getContext('2d');let stars=[],mouse={x:-1e3,y:-1e3};
 const heroMark=document.querySelector('.hero-mark');
-document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;if(heroMark&&scrollY<innerHeight){const cx=innerWidth/2,cy=innerHeight/2;const dx=(e.clientX-cx)/cx*-8,dy=(e.clientY-cy)/cy*-6;heroMark.style.transform=`translate(${dx}px,${dy}px)`}});
+document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
 function resize(){canvas.width=innerWidth;canvas.height=innerHeight;initStars()}
 function initStars(){stars=[];const c=Math.floor(canvas.width*canvas.height/18e3);for(let i=0;i<c;i++)stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2+.3,baseAlpha:Math.random()*.4+.1,alpha:0,twinkleSpeed:Math.random()*.008+.003,twinkleOffset:Math.random()*Math.PI*2})}
 function drawStars(t){ctx.clearRect(0,0,canvas.width,canvas.height);const{sr,sg,sb,lr,lg,lb}=starColors;for(let i=0;i<stars.length;i++){const s=stars[i],tw=Math.sin(t*s.twinkleSpeed+s.twinkleOffset)*.3+.7,dx=mouse.x-s.x,dy=mouse.y-s.y,dist=Math.sqrt(dx*dx+dy*dy),prox=dist<200?(1-dist/200)*.5:0;s.alpha=s.baseAlpha*tw+prox;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(${sr},${sg},${sb},${s.alpha})`;ctx.fill();if(prox>0)for(let j=i+1;j<stars.length;j++){const s2=stars[j],d=Math.sqrt((s.x-s2.x)**2+(s.y-s2.y)**2);if(d<100){ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s2.x,s2.y);ctx.strokeStyle=`rgba(${lr},${lg},${lb},${prox*(1-d/100)*.15})`;ctx.lineWidth=.5;ctx.stroke()}}}requestAnimationFrame(drawStars)}
-addEventListener('resize',resize);document.addEventListener('mouseleave',()=>{mouse.x=-1e3;mouse.y=-1e3;if(heroMark)heroMark.style.transform=''});resize();requestAnimationFrame(drawStars);
+addEventListener('resize',resize);document.addEventListener('mouseleave',()=>{mouse.x=-1e3;mouse.y=-1e3;});resize();requestAnimationFrame(drawStars);
 
 // Reveals
 const reveals=document.querySelectorAll('.reveal');
